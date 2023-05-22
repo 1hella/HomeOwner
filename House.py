@@ -18,7 +18,7 @@ class House:
         self.heating = "off"
 
     def process_moment(self):
-        if self.heating == "on":
+        if self.heating == "on" and self.door == "closed":
             self.temp += 1
         elif self.heating == "off":
             self.temp -= 1
@@ -36,6 +36,7 @@ class House:
         return self.heating == 'off'
 
     def print_stats(self):
-        print(f"the door is {self.door}")
-        print(f"the heating is {self.heating}")
-        print(f"the temp is {self.temp}C")
+        print("---Status---")
+        print(f"The door is {self.door}.")
+        print(f"The heating is {self.heating}.")
+        print(f"The temp is {self.temp}C.")

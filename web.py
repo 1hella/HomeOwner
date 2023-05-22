@@ -1,4 +1,5 @@
 import streamlit as st
+
 from House import House
 
 if 'house' not in st.session_state:
@@ -11,7 +12,7 @@ def open_door():
     if house.is_door_closed():
         house.open_door()
         house.process_moment()
-        st.session_state['action'] = 'door is now open'
+        st.session_state['action'] = 'The door is now open.'
     else:
         do_nothing()
 
@@ -20,7 +21,7 @@ def close_door():
     if house.is_door_open():
         house.close_door()
         house.process_moment()
-        st.session_state['action'] = 'door is now closed'
+        st.session_state['action'] = 'The door is now closed.'
     else:
         do_nothing()
 
@@ -29,7 +30,7 @@ def start_heating():
     if house.is_heating_off():
         house.start_heating()
         house.process_moment()
-        st.session_state['action'] = 'heating is now on'
+        st.session_state['action'] = 'The heating is now on.'
     else:
         do_nothing()
 
@@ -38,14 +39,14 @@ def stop_heating():
     if house.is_heating_on():
         house.stop_heating()
         house.process_moment()
-        st.session_state['action'] = 'heating is now off'
+        st.session_state['action'] = 'The heating is now off.'
     else:
         do_nothing()
 
 
 def do_nothing():
     house.process_moment()
-    st.session_state['action'] = "you've done nothing"
+    st.session_state['action'] = "You've done nothing."
 
 
 st.title('House')
@@ -72,9 +73,9 @@ with col5:
     st.button("Do nothing", on_click=do_nothing)
 
 
-st.write(f"the door is {house.door}\n")
-st.write(f"the heating is {house.heating}")
-st.write(f"the temp is {house.temp}C")
+st.write(f"The door is {house.door}.\n")
+st.write(f"The heating is {house.heating}.")
+st.write(f"The temp is {house.temp}C.")
 
 if 'action' in st.session_state:
     st.info(st.session_state['action'])
